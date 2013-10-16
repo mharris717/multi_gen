@@ -6,8 +6,8 @@ module MultiGen
     include FromHash
     attr_accessor :project_type, :file_type, :name
 
-    def to_create_file(file_specs)
-      res = CreateFile.new
+    def to_s
+      "#{project_type} #{file_type} #{name}"
     end
   end
 end

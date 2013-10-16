@@ -23,3 +23,15 @@ module MultiGen
     end
   end
 end
+
+ProjectGroup::Single
+class ProjectGroup::Single
+  def relative_path(rpath)
+    res = rpath.gsub(path,"")
+    raise "bad" if res == rpath
+    res[1..-1]
+  end
+  def base_path
+    path
+  end
+end

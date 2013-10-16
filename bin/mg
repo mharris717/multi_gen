@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+load File.dirname(__FILE__) + "/../lib/multi_gen.rb"
+
+command = MultiGen::Command.from_argv(ARGV)
+command.run!

@@ -15,3 +15,17 @@ describe "Project" do
     lambda { project.relative_path("junk") }.should raise_error
   end
 end
+
+describe "project2" do
+  let(:project) do
+    ProjectGroup::Single.new(:path => "/a/b", :type => :EAK)
+  end
+
+  it 'relative_path' do
+    project.relative_path("/a/b/app/widget.coffee").should == "app/widget.coffee"
+  end
+
+  it 'bad relative path' do
+    lambda { project.relative_path("junk") }.should raise_error
+  end
+end

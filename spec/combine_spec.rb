@@ -14,7 +14,7 @@ describe "Combine" do
   end
 
   let(:create_file) do
-    CreateFile.new(:input_spec => spec, :project => project, :gen_file => controller_spec)
+    CreateFile.new(:input_spec => spec, :project => project, :file_spec => controller_spec)
   end
 
   it 'file_name' do

@@ -19,10 +19,31 @@ shared_context "file specs" do
     res
   end
 
+  let(:resource_spec) do
+    res = MultiGen::FileSpecCompound.new
+    res.name = "EAK Resource"
+    res.project_type = "EAK"
+    res.file_type = :resource
+    res.body_structure = [:model, :controller]
+    res
+  end
+
+  let(:rails_model_spec) do
+    res = MultiGen::FileSpecWithBodyCommand.new
+    res.name = "EAK Model"
+    res.project_type = "Rails"
+    res.file_type = :model
+    res.file_structure = "app/models/NAME.rb"
+    res.body_structure = "rails g model NAME"
+    res
+  end
+
   let(:file_specs) do
     res = MultiGen::FileSpec::List.new
+    res << rails_model_spec
     res << controller_spec
     res << model_spec
+    res << resource_spec
     res
   end
 end

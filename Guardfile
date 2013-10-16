@@ -1,7 +1,7 @@
 # A sample Guardfile
 # More info at https://github.com/guard/guard#readme
 
-guard 'spork' do
+guard 'spork', :rspec_port => 5810 do
   watch('config/application.rb')
   watch('config/environment.rb')
   watch('config/environments/test.rb')
@@ -17,7 +17,7 @@ end
 
 
 
-guard 'rspec', :cli => "--drb" do
+guard 'rspec', :cli => "--drb --drb-port 5810" do
   watch(%r{^spec/.+_spec\.rb$}) 
   watch(%r{^lib/(.+)\.rb$})   { "spec" } # { |m| "spec/lib/#{m[1]}_spec.rb" }
   watch(%r{^lib/(.+)\.treetop$})   { "spec" }

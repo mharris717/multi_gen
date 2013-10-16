@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/mharris717/project_group.git
-  revision: af228f1cb7e438db802f46ec9a2501b15ce25656
+  revision: 047c7fdf51025ebe3ac175462d0d89ebc569ab66
   branch: master
   specs:
     project_group (0.1.1)
