@@ -40,6 +40,7 @@ Gem::Specification.new do |s|
     "lib/multi_gen/project.rb",
     "lib/multi_gen/structure.rb",
     "lib/multi_gen/universe.rb",
+    "multi_gen.gemspec",
     "spec/combine_spec.rb",
     "spec/dsl_spec.rb",
     "spec/gen_files_spec.rb",
