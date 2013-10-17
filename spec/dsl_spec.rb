@@ -25,6 +25,10 @@ def run_dsl(d)
     end
 
     p.compound :resource => [:model,:controller]
+
+    p.create do |c|
+      c.command "ls"
+    end
   end
 
   17
@@ -32,11 +36,11 @@ end
 
 def run_dsl_rails(d)
   d.project :rails do |p|
-    d.model do |m|
+    p.model do |m|
       m.command "rails g model NAME"
     end
 
-    d.resource do |m|
+    p.resource do |m|
       m.command "rails g resource NAME"
     end
   end
@@ -57,12 +61,12 @@ describe "FileSpecs" do
 
   it 'leaf specs' do
     run_dsl(dsl)
-    dsl.specs.size.should == 7
+    dsl.specs.size.should == 8
   end
 
   it 'spec names' do
     run_dsl(dsl)
-    dsl.specs.map { |x| x.file_type.to_s }.sort.should == %w(model controller model-model model-test controller-controller controller-test resource).sort
+    dsl.specs.map { |x| x.file_type.to_s }.sort.should == %w(create model controller model-model model-test controller-controller controller-test resource).sort
     #dsl.specs.find { |x| x.file_type == 'model' }.should be
   end
 

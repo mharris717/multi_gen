@@ -25,3 +25,30 @@ describe "Combine" do
     create_file.body.should == "Widget = DS.Model.extend()"
   end
 end
+
+describe "Combine - create" do
+  include_context "file specs"
+
+  let(:spec) do
+    InputSpec.new(:project_type => "EAK", :file_type => :controller, :name => "widget")
+  end
+
+  fattr(:dir_name) do
+    rand(1000000000).to_s
+  end
+
+  let(:project) do
+    dir = File.expand_path(File.dirname(__FILE__) + "/../tmp")
+    Project.new(:base_path => "#{dir}/#{dir_name}", :project_type => "EAK")
+  end
+
+  let(:create_file) do
+    CreateFile.new(:input_spec => spec, :project => project, :file_spec => eak_create_spec)
+  end
+
+  it 'body' do
+    MultiGen.should_receive(:ec).with("gen #{dir_name}")
+    create_file.run!
+
+  end
+end

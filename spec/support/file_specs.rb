@@ -38,6 +38,15 @@ shared_context "file specs" do
     res
   end
 
+  let(:eak_create_spec) do
+    res = MultiGen::FileSpecWithBodyCommand.new
+    res.name = "EAK Create"
+    res.project_type = :EAK
+    res.file_type = :create
+    res.body_structure = "gen NAME"
+    res
+  end
+
   let(:file_specs) do
     res = MultiGen::FileSpec::List.new
     res << rails_model_spec

@@ -7,5 +7,9 @@ MultiGen.register do |d|
     p.resource do |m|
       m.command "rails g resource NAME"
     end
+
+    p.create do |c|
+      c.command "rails new NAME"
+    end
   end
 end

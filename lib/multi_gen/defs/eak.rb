@@ -24,6 +24,15 @@ MultiGen.register do |d|
       end
     end
 
-    p.compound :resource => [:model,:controller]
+    p.template do |c|
+      c.file "app/templates/NAME.hbs"
+      c.body "{{each NAME in controller}}\n  {{NAME.name}}\n{{/each}}"
+    end
+
+    p.compound :resource => [:model,:controller,:template]
+
+    p.create do |c|
+      c.command "git clone https://github.com/stefanpenner/ember-app-kit.git NAME"
+    end
   end
 end
